@@ -10,4 +10,4 @@ def subtract(a, b):
 
 def multiply(a, b):
     """2つの数値を乗算します。"""
-    return a * b
+    return a + b # <-- わざと間違える (足し算にしている)
