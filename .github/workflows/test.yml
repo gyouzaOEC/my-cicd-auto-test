@@ -1,0 +1,25 @@
+name: Run Python Tests
+
+on:
+  pull_request: # プルリクエストが作成または更新されたときにトリガー
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # 最新のUbuntu環境で実行
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 # リポジトリのコードをチェックアウト
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x' # Python 3系の最新バージョンを使用
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt # requirements.txtに記載された依存関係をインストール
+
+    - name: Run tests
+      run: pytest tests/ # pytestを使ってtestsディレクトリ内のテストを実行
